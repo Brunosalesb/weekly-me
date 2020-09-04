@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "49274304692",
+    "firebase_url": "https://weeklyme-cb173.firebaseio.com",
+    "project_id": "weeklyme-cb173",
+    "storage_bucket": "weeklyme-cb173.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49274304692:android:c723fdf3c14dcfb834bfe1",
+        "android_client_info": {
+          "package_name": "com.weeklyme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49274304692-kdvsagnnu1fkussf0ba0nl4mjq3jpmb0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdbkD_nLO-EAPtCac-wMCXnzoOmxKlX7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "49274304692-kdvsagnnu1fkussf0ba0nl4mjq3jpmb0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
