@@ -4,6 +4,7 @@ import styles from "./styles";
 import firestore from "@react-native-firebase/firestore";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useRoute, useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Activity = () => {
 
@@ -56,6 +57,39 @@ const Activity = () => {
         navigation.navigate(pageName);
     }
 
+    function goToPreviousDay() {
+        let pageName;
+        switch (routeName) {
+            case "Segunda-feira":
+                pageName = "Domingo";
+                break;
+            case "Terça-feira":
+                pageName = "Segunda-feira";
+                break;
+
+            case "Quarta-feira":
+                pageName = "Terça-feira";
+                break;
+
+            case "Quinta-feira":
+                pageName = "Quarta-feira";
+                break;
+
+            case "Sexta-feira":
+                pageName = "Quinta-feira";
+                break;
+
+            case "Sábado":
+                pageName = "Sexta-feira";
+                break;
+
+            case "Domingo":
+                pageName = "Sábado";
+                break;
+        }
+        navigation.navigate(pageName);
+    }
+
     useEffect(() => {
         getActivities();
     }, [])
@@ -77,11 +111,21 @@ const Activity = () => {
                     </View>
                 )}
             />
-            <View>
+            <View style={styles.pageButtons}>
+                <TouchableOpacity
+                    onPress={goToPreviousDay}
+                >
+                    <Icon name="chevron-left" size={30} color="black" />
+                </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={null}
+                >
+                    <Icon name="plus" size={30} color="black" />
+                </TouchableOpacity>
                 <TouchableOpacity
                     onPress={goToNextDay}
                 >
-                    <Text>Próximo</Text>
+                    <Icon name="chevron-right" size={30} color="black" />
                 </TouchableOpacity>
             </View>
         </View>

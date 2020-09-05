@@ -11,4 +11,11 @@ export default StyleSheet.create({
     },
     activityHour: {
     },
+    pageButtons: {
+        flexDirection: 'row',
+         width: '70%',
+         justifyContent: 'space-between',
+         marginBottom: '4%',
+         marginTop: '3%'
+    }
 })
