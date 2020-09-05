@@ -12,16 +12,50 @@ const Activity = () => {
     const route = useRoute();
     const routeName = route.name;
 
-    const [activities, setActivities] = useState([]);
+    const [dayActivities, setDayActivities] = useState([]);
 
     function getActivities() {
-        firestore().collection("activities").onSnapshot((docs) => {
-            let activities = [];
+        let collectionName = firestoreCollectionName();
+        firestore().collection(collectionName).onSnapshot((docs) => {
+            let dayActivities = [];
             docs.forEach(doc => {
-                activities.push(doc.data());
+                dayActivities.push(doc.data());
             })
-            setActivities(activities);
+            setDayActivities(dayActivities);
         })
+    }
+
+    function firestoreCollectionName() {
+        let dbName;
+        switch (routeName) {
+            case "Segunda-feira":
+                dbName = "monday";
+                break;
+            case "Terça-feira":
+                dbName = "tuesday";
+                break;
+
+            case "Quarta-feira":
+                dbName = "wednesday";
+                break;
+
+            case "Quinta-feira":
+                dbName = "thursday";
+                break;
+
+            case "Sexta-feira":
+                dbName = "friday";
+                break;
+
+            case "Sábado":
+                dbName = "saturday";
+                break;
+
+            case "Domingo":
+                dbName = "sunday";
+                break;
+        }
+        return dbName;
     }
 
     function goToNextDay() {
@@ -97,16 +131,13 @@ const Activity = () => {
     return (
         <View style={styles.container}>
             <FlatList
-                data={activities}
-                keyExtractor={activity => String(activity.description)}
+                data={dayActivities}
+                keyExtractor={dayActivity => String(dayActivity.activity)}
                 showsVerticalScrollIndicator={false}
-                renderItem={({ item: activity }) => (
+                renderItem={({ item: dayActivity }) => (
                     <View style={styles.activity}>
                         <View>
-                            <Text>{activity.description}</Text>
-                        </View>
-                        <View>
-                            <Text>{activity.hour}</Text>
+                            <Text>{dayActivity.activity}</Text>
                         </View>
                     </View>
                 )}
