@@ -10,13 +10,7 @@ const Routes = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="Segunda-feira" component={Activity} options={{ headerTitleAlign: 'center', headerLeft: null }} />
-                <Stack.Screen name="Terça-feira" component={Activity} options={{ headerTitleAlign: 'center', headerLeft: null }} />
-                <Stack.Screen name="Quarta-feira" component={Activity} options={{ headerTitleAlign: 'center', headerLeft: null }} />
-                <Stack.Screen name="Quinta-feira" component={Activity} options={{ headerTitleAlign: 'center', headerLeft: null }} />
-                <Stack.Screen name="Sexta-feira" component={Activity} options={{ headerTitleAlign: 'center', headerLeft: null }} />
-                <Stack.Screen name="Sábado" component={Activity} options={{ headerTitleAlign: 'center', headerLeft: null }} />
-                <Stack.Screen name="Domingo" component={Activity} options={{ headerTitleAlign: 'center', headerLeft: null }} />
+                <Stack.Screen name="Atividades" component={Activity} options={{ headerTitleAlign: 'center' }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

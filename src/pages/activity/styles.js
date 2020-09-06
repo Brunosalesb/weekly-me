@@ -4,18 +4,23 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
+        backgroundColor: 'yellow'
     },
-    activity: {
+    flatlist: {
+        width: '80%'
     },
     activityDescription: {
+        backgroundColor: 'green',
+        borderRadius: 8,
+        padding: 8,
+        marginTop: '4%',
     },
-    activityHour: {
+    activityStatus: {
     },
     pageButtons: {
-        flexDirection: 'row',
-         width: '70%',
-         justifyContent: 'space-between',
-         marginBottom: '4%',
-         marginTop: '3%'
-    }
+        justifyContent: 'center',
+        marginBottom: '5%',
+        marginTop: '3%'
+    },
+
 })
