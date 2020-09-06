@@ -16,21 +16,30 @@ const Activities = () => {
     function getActivities() {
         firestore().collection("activities").onSnapshot((docs) => {
             let activities = [];
+            let idsCollection = [];
             docs.forEach(doc => {
+                idsCollection.push(doc.id);
                 activities.push(doc.data());
             })
+            addIdToActivities(idsCollection, activities);
             setActivities(activities);
         })
+    }
+
+    function addIdToActivities(ids, activities) {
+        for (let i = 0; i < activities.length; i++) {
+            activities[i].id = ids[i];
+        }
     }
 
     function goToAddActivityScreen(id) {
         navigation.navigate('Cadastrar atividade');
     }
 
-    function changeActivityStatus(id) {
-        alert(id)
-        setActivities()
-    }
+    // function changeActivityStatus(id) {
+    //     alert(id)
+    //     setActivities()
+    // }
 
     useEffect(() => {
         getActivities();
