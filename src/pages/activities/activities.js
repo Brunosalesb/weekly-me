@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const Activity = () => {
+const Activities = () => {
 
     const navigation = useNavigation();
     const route = useRoute();
@@ -21,6 +21,10 @@ const Activity = () => {
             })
             setActivities(activities);
         })
+    }
+
+    function goToAddActivityScreen(id) {
+        navigation.navigate('Cadastrar atividade');
     }
 
     function changeActivityStatus(id) {
@@ -55,13 +59,13 @@ const Activity = () => {
             />
             <View style={styles.pageButtons}>
                 <TouchableOpacity
-                    onPress={null}
+                    onPress={goToAddActivityScreen}
                 >
-                    <Icon name="plus" size={30} color="black" />
+                    <Icon name="plus-circle" size={40} color="green" />
                 </TouchableOpacity>
             </View>
         </View>
     )
 }
 
-export default Activity;
+export default Activities;
