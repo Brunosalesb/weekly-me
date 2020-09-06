@@ -8,7 +8,7 @@ export default StyleSheet.create({
 
     },
     flatlist: {
-        width: '80%'
+        width: '80%',
     },
     activityDescription: {
         borderRadius: 8,
@@ -18,7 +18,8 @@ export default StyleSheet.create({
         backgroundColor: 'white'
 
     },
-    activityStatus: {
+    trashIcon : {
+        padding: 5,
     },
     pageButtons: {
         justifyContent: 'center',

@@ -9,7 +9,7 @@ const AddActivity = () => {
 
     if (editMode)
         navigation.setOptions({ title: "Editar atividade" })
-        
+
     //#region Consts
     const navigation = useNavigation();
     const route = useRoute();
@@ -30,8 +30,7 @@ const AddActivity = () => {
 
     function addActivity() {
         firestore().collection('activities').add({
-            description: activity,
-            done: false,
+            description: activity
         })
         alert('Cadastrado com sucesso!')
     }

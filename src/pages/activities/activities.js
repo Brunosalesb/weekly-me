@@ -35,10 +35,9 @@ const Activities = () => {
         navigation.navigate('Cadastrar atividade', { activity });
     }
 
-    // function changeActivityStatus(id) {
-    //     alert(id)
-    //     setActivities()
-    // }
+    function deleteActivity(id) {
+        firestore().collection('activities').doc(id).delete();
+    }
 
     useEffect(() => {
         getActivities();
@@ -59,12 +58,11 @@ const Activities = () => {
                         >
                             <Text>{activity.description}</Text>
                         </TouchableOpacity>
-                        {/* <CheckBox style={styles.activityStatus}
-                              checked={activities[activity.id].done}
-
-                            onValueChange={() => changeActivityStatus(activity.id)}
-                        />
-                        <Text>{activity.done ? "Feito!" : "A fazer"}</Text> */}
+                        <TouchableOpacity
+                            onPress={() => deleteActivity(activity.id)}
+                        >
+                            <Icon style={styles.trashIcon} name="trash" size={20} color="red" />
+                        </TouchableOpacity>
                     </>
                 )}
             />
