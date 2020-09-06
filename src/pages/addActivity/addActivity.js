@@ -7,16 +7,41 @@ import firestore from "@react-native-firebase/firestore";
 
 const AddActivity = () => {
 
+    if (editMode)
+        navigation.setOptions({ title: "Editar atividade" })
+        
+    //#region Consts
     const navigation = useNavigation();
+    const route = useRoute();
+    const activityToEdit = route.params.activity;
+    const editMode = activityToEdit != undefined ? true : false;
+    //#endregion
 
-    const [activity, setActivity] = useState();
+    const [activity, setActivity] = useState(editMode ? activityToEdit.description : null);
 
-    async function addActivity() {
-        await firestore().collection('activities').add({
+    function submit() {
+        if (!editMode) {
+            addActivity();
+        } else {
+            updateActivity();
+        }
+        navigation.navigate('Atividades');
+    }
+
+    function addActivity() {
+        firestore().collection('activities').add({
             description: activity,
             done: false,
         })
-        navigation.navigate('Atividades');
+        alert('Cadastrado com sucesso!')
+    }
+
+    function updateActivity() {
+        firestore().collection('activities').doc(activityToEdit.id).update({
+            description: activity,
+            done: false,
+        })
+        alert('Atualizado com sucesso!')
     }
 
     return (
@@ -30,10 +55,10 @@ const AddActivity = () => {
 
                 </TextInput>
                 <TouchableOpacity
-                    onPress={addActivity}
+                    onPress={submit}
                     style={styles.addInput}
                 >
-                    <Text style={{ color: 'white' }}>Cadastrar</Text>
+                    <Text style={{ color: 'white' }}>Salvar</Text>
                 </TouchableOpacity>
             </View>
         </View>

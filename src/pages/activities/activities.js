@@ -3,13 +3,12 @@ import { View, Text, FlatList, CheckBox } from 'react-native';
 import styles from "./styles";
 import firestore from "@react-native-firebase/firestore";
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useRoute, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Activities = () => {
 
     const navigation = useNavigation();
-    const route = useRoute();
 
     const [activities, setActivities] = useState([]);
 
@@ -32,8 +31,8 @@ const Activities = () => {
         }
     }
 
-    function goToAddActivityScreen(id) {
-        navigation.navigate('Cadastrar atividade');
+    function goToAddActivityScreen(activity) {
+        navigation.navigate('Cadastrar atividade', { activity });
     }
 
     // function changeActivityStatus(id) {
@@ -54,9 +53,12 @@ const Activities = () => {
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item: activity }) => (
                     <>
-                        <View style={styles.activityDescription}>
+                        <TouchableOpacity
+                            style={styles.activityDescription}
+                            onPress={() => goToAddActivityScreen(activity)}
+                        >
                             <Text>{activity.description}</Text>
-                        </View>
+                        </TouchableOpacity>
                         {/* <CheckBox style={styles.activityStatus}
                               checked={activities[activity.id].done}
 
