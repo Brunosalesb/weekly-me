@@ -20,6 +20,8 @@ export default StyleSheet.create({
     },
     trashIcon : {
         padding: 5,
+        width: '10%',
+        flexDirection: 'row'
     },
     pageButtons: {
         justifyContent: 'center',

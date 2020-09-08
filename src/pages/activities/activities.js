@@ -58,11 +58,17 @@ const Activities = () => {
                         >
                             <Text>{activity.description}</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity
-                            onPress={() => deleteActivity(activity.id)}
-                        >
-                            <Icon style={styles.trashIcon} name="trash" size={20} color="red" />
-                        </TouchableOpacity>
+                        
+                        <View style={styles.trashIcon}>
+                            <TouchableOpacity>
+                                <Icon
+                                    onPress={() => deleteActivity(activity.id)}
+                                    name="trash"
+                                    size={20}
+                                    color="red"
+                                />
+                            </TouchableOpacity>
+                        </View>
                     </>
                 )}
             />
